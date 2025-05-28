@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+                      <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> Email </th>
+                            <th> Place </th>
+                            <th> Address </th>
+                            <th> Mobile </th>
+                            <th> State </th>
+                            <th> Pin </th>
+                            <th> TotalPrice </th>
+                            <th> Messages </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>{{d.Name}}</td>
+                          <td>{{d.Email}}</td>
+                          <td>{{d.Place}}</td>
+                          <td>{{d.Address}}</td>
+                          <td>{{d.Mobile}}</td>
+                          <td>{{d.State}}</td>
+                          <td>{{d.Pin}}</td>
+                          <td>{{d.TotalPrice}}</td>
+                          <td>{{d.Messages}}</td>
+                            <td>
+
+                                  <a href="{% url 'delete_order2' pro_id=d.id %}">
+                                      <button class="btn btn-danger">Delete</button>
+                                  </a>
+                              </td>
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+
+</body>
+</html>
+{% endblock %}

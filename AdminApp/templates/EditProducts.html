@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Products</h4>
+                    <p class="card-description">  </p>
+                    <form class="forms-sample" method="post" action="{% url 'update_product' pro_id=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleSelectGender">Category name </label>
+                        <select class="form-control" id="exampleSelectGender" name="category">
+                          <option>{{data.Category_name}}</option>
+                            {% for d in category %}
+                          <option>{{d.Category_name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInputEmail3">Product name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Product name" name="product" value="{{data.Product_name}}">
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInput2">Price</label>
+                        <input type="number" class="form-control" id="exampleInput2" placeholder="Price" name="price" value="{{data.Price}}">
+                      </div>
+                         <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description" name="description">{{data.Description}}</textarea>
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInput3">Quantity</label>
+                        <input type="number" class="form-control" id="exampleInput3" placeholder="Quantity" name="quantity" value="{{data.Quantity}}">
+                      </div>
+                       <div class="form-group">
+                        <label>Product Image</label>
+                             <img src="{{data.Image.url}}" width="100px" height="100px">
+                        <input type="file" name="image">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+</body>
+</html>
+{% endblock %}

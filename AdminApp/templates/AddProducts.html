@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Category</h4>
+                    <p class="card-description">  </p>
+                    <form class="forms-sample" method="post" action="{% url 'save_product' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleSelectGender">Category name </label>
+                        <select class="form-control" id="exampleSelectGender" name="category">
+                          <option>Select</option>
+                            {% for d in category %}
+                          <option>{{d.Category_name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInputEmail3">Product name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Product name" name="product">
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInput2">Price</label>
+                        <input type="number" class="form-control" id="exampleInput2" placeholder="Price" name="price">
+                      </div>
+                         <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description" name="description"></textarea>
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInput3">Quantity</label>
+                        <input type="number" class="form-control" id="exampleInput3" placeholder="Quantity" name="quantity">
+                      </div>
+
+
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputPassword4">Password</label>-->
+<!--                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label>File upload</label>-->
+<!--                        <input type="file" name="img[]" class="file-upload-default">-->
+<!--                        <div class="input-group col-xs-12">-->
+<!--                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                          <span class="input-group-append">-->
+<!--                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                          </span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputCity1">City</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                      </div>-->
+
+                         <div class="form-group">
+                        <label for="exampleImage1">Profile Image</label>
+                        <input type="file" class="form-control" id="exampleImage1" name="image">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        {% if messages %}
+  {% for i in messages %}
+     {% if i.tags == 'success' %}
+        <script>
+            swal('{{i}}','','success');
+        </script>
+     {% elif i.tags == 'error' %}
+        <script>
+            swal('{{i}}','','error');
+        </script>
+     {% elif i.tags == 'Warning' %}
+        <script>
+            swal('{{i}}','','Warning');
+        </script>
+     {% else %}
+        <script>
+            swal('{{i}}','','Info');
+        </script>
+     {% endif %}
+  {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

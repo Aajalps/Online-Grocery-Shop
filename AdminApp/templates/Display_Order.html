@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+                      <thead>
+                        <tr>
+                            <th> User Name </th>
+                            <th> Product Name </th>
+                            <th> Price </th>
+                            <th> Quantity </th>
+                            <th> Total </th>
+                            <th> Action </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>{{d.Username}}</td>
+                          <td>{{d.Product_Name}}</td>
+                          <td>{{d.Price}}</td>
+                          <td>{{d.Quantity}}</td>
+                          <td>{{d.Totalprice}}</td>
+                            <td>
+
+                                  <a href="{% url 'delete_order' pro_id=d.id %}">
+                                      <button class="btn btn-danger">Delete</button>
+                                  </a>
+                              </td>
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+
+</body>
+</html>
+{% endblock %}

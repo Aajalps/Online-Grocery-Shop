@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+                      <thead>
+                        <tr>
+                            <th>Name </th>
+                          <th>Email </th>
+                          <th> Mobile Number </th>
+                          <th> Subject </th>
+                          <th> Message </th>
+                          <th> Action </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>{{d.Name}}</td>
+                          <td>{{d.Email}}</td>
+                          <td>{{d.Number}}</td>
+                          <td>{{d.Subject}}</td>
+                          <td>{{d.Message}}</td>
+
+                            <td>
+<!--                                  <a href="{% url 'Edit_category' pro_id=d.id %}">-->
+<!--                                      <button class="btn btn-primary mr-2">Edit</button>-->
+<!--                                  </a>-->
+                                  <a href="{% url 'delete_contact' pro_id=d.id %}">
+                                      <button class="btn btn-danger">Delete</button>
+                                  </a>
+                              </td>
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .payment-container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .payment-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .payment-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="#">
+    {% csrf_token %}
+    <div class="payment-container">
+        <h2>Make Your Payment</h2>
+
+        <button type="submit" class="payment-button">Make Payment</button>
+
+
+
+
+    </div>
+</form>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_ObJHmffMu9mQKT"
+    data-amount="{{payy_str}}"
+    data-currency="INR"
+    data-order_id="{{payment.order_id}}"
+    data-buttontext=""
+    data-name="Bigmart"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#4badeb"
+>
+ </script>
+</body>
+</html>
